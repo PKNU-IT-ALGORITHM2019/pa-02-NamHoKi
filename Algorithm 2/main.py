@@ -1,5 +1,6 @@
 import math
 import copy
+from datetime import datetime
 global tour_list,best_list, best_distance
 tour_list = []
 best_list = []
@@ -47,5 +48,9 @@ def tour(k,curdist):
         tour(k+1,curdist + ((((x_list[k] - x_list[k - 1]) ** 2) + ((y_list[k] - y_list[k - 1]) ** 2)) ** 0.5))
         swap(k,i)
 read_file()
+now = datetime.now()
+print('start : %s:%s:%s'%(now.hour,now.minute,now.second))
 tour(1,0)
 print(best_distance,'\n',best_list)
+now = datetime.now()
+print('end : %s:%s:%s'%(now.hour,now.minute,now.second))
