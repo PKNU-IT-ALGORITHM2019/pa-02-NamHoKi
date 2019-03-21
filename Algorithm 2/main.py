@@ -11,7 +11,7 @@ def read_file():
         global n, x_list, y_list , tour_list
         text = f.read()
         line = text.split('\n')
-        n = int(line[0][0])  # 첫 줄의 첫 원소 = n
+        n = int(line[0])  # 첫 줄의 첫 원소 = n
         x_list = []
         y_list = []
         for i in range(1,n+1):
