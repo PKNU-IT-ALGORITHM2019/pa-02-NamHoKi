@@ -1,9 +1,9 @@
 import math
 import copy
-global d , tour_list,result_list
+global tour_list,best_list, best_distance
 tour_list = []
-result_list = []
-d = 1000
+best_list = []
+best_distance = 1000
 
 def read_file():
     file_name = input('파일이름을 입력하시오 : ')
@@ -33,25 +33,19 @@ def swap(k,i):
     tour_list[k] = tour_list[i]
     tour_list[i] = temp
 
-def tour(k):
-    global n, x_list, y_list,d,tour_list,result_list
-    if k==n:
-        sum = 0
-        result = 0
-        for j in range(0,n-1):
-            sum += (x_list[j]-x_list[j+1])**2
-            sum += (y_list[j]-y_list[j+1])**2
-            sum = sum**0.5
-            result += sum
-            sum=0
-        result += (((x_list[n-1]-x_list[0])**2) + (y_list[n-1]-y_list[0])**2)**0.5
-        if d > result:
-            d = result
-            result_list = copy.deepcopy(tour_list)
+def tour(k,curdist):
+    global n, x_list, y_list,best_distance,tour_list,best_list
+    if curdist >= best_distance:
+        return -1
+    elif k==n:
+        curdist += (((x_list[k-1]-x_list[0])**2) + (y_list[k-1]-y_list[0])**2)**0.5
+        if best_distance > curdist:
+            best_distance = curdist
+            best_list = copy.deepcopy(tour_list)
     for i in range(k, n):
         swap(k,i)
-        tour(k+1)
+        tour(k+1,curdist + ((((x_list[k] - x_list[k - 1]) ** 2) + ((y_list[k] - y_list[k - 1]) ** 2)) ** 0.5))
         swap(k,i)
 read_file()
-tour(1)
-print(d,'\n',result_list)
+tour(1,0)
+print(best_distance,'\n',best_list)
