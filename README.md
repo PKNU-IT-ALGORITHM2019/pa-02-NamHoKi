@@ -12,9 +12,10 @@
     
 3. 기타 사항
 - input6.txt는 30분 넘게 걸립니다
-- 재귀호출 할 때, tour(k+1,curdist + ((((x_list[k] - x_list[k - 1]) ** 2) + ((y_list[k] - y_list[k - 1]) ** 2)) ** 0.5)) 와
+- 재귀호출 할 때, 
+		tour(k+1,curdist + ((((x_list[k] - x_list[k - 1]) ** 2) + ((y_list[k] - y_list[k - 1]) ** 2)) ** 0.5)) 와
 
-                 curdist += (((x_list[k] - x_list[k - 1]) ** 2) + ((y_list[k] - y_list[k - 1]) ** 2)) ** 0.5)
-		 tour(k+1 , curdist)
+		curdist += (((x_list[k] - x_list[k - 1]) ** 2) + ((y_list[k] - y_list[k - 1]) ** 2)) ** 0.5)
+		tour(k+1 , curdist)
 		 
 		 결과가 왜 다르게 나오는지 궁금합니다
